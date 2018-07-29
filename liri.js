@@ -40,10 +40,11 @@ function spotifyGet(music) {
       return console.log('Error occurred: ' + err);
     }
     var songObj = data.tracks.items[0];
-    console.log('Song: ' + songObj.name);
-    console.log('Artist: ' + songObj.album.artists[0].name);
-    console.log('Album: ' + songObj.album.name);
-    console.log('Spotify Link: ' + songObj.external_urls.spotify);
+    console.log('Results for ' + music + ':');
+    console.log('\t' + 'Song: ' + songObj.name);
+    console.log('\t' + 'Artist: ' + songObj.album.artists[0].name);
+    console.log('\t' + 'Album: ' + songObj.album.name);
+    console.log('\t' + 'Spotify Link: ' + songObj.external_urls.spotify);
   });
 };
 
@@ -51,14 +52,15 @@ function spotifyGet(music) {
 function movieGet(movieChoice) {
   request("http://www.omdbapi.com/?t=" + movieChoice + "&y=&plot=short&apikey=trilogy", function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      console.log('Movie: ' + JSON.parse(body).Title);
-      console.log('Year: ' + JSON.parse(body).Year);
-      console.log('IMDB Rating: ' + JSON.parse(body).imdbRating);
-      console.log('Rotten Tomatoes Rating: ' + JSON.parse(body).Ratings[1].Value);
-      console.log('Country: ' + JSON.parse(body).Country);
-      console.log('Language: ' + JSON.parse(body).Language);
-      console.log('Plot: ' + JSON.parse(body).Plot);
-      console.log('Actors: ' + JSON.parse(body).Actors);
+      console.log('Results for ' + movieChoice + ':');
+      console.log('\t' + 'Movie: ' + JSON.parse(body).Title);
+      console.log('\t' + 'Year: ' + JSON.parse(body).Year);
+      console.log('\t' + 'IMDB Rating: ' + JSON.parse(body).imdbRating);
+      console.log('\t' + 'Rotten Tomatoes Rating: ' + JSON.parse(body).Ratings[1].Value);
+      console.log('\t' + 'Country: ' + JSON.parse(body).Country);
+      console.log('\t' + 'Language: ' + JSON.parse(body).Language);
+      console.log('\t' + 'Plot: ' + JSON.parse(body).Plot);
+      console.log('\t' + 'Actors: ' + JSON.parse(body).Actors);
     } else {
       console.log(error);
     }
